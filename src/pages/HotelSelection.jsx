@@ -10,6 +10,7 @@ import Footer from '../layout/Footer';
 import TravelLoader from '../components/TravelLoader';
 
 const HOTELS_PER_PAGE = 4;
+const URL = 'https://dream-reserve.azurewebsites.net/api/V1'
 
 export default function HotelListingPage() {
   const [hotels, setHotels] = useState([]);
@@ -33,9 +34,9 @@ export default function HotelListingPage() {
     setError(null);
     try {
       const [hotelResponse, roomResponse, foodResponse] = await Promise.all([
-        axios.get('https://dreamreserve.azurewebsites.net/api/V1/Hotel'),
-        axios.get('https://dreamreserve.azurewebsites.net/api/V1/Room'),
-        axios.get('https://dreamreserve.azurewebsites.net/api/V1/Food'),
+        axios.get(`${URL}/Hotel`),
+        axios.get(`${URL}/Room`),
+        axios.get(`${URL}/Food`),
       ]);
 
       setHotels(hotelResponse.data);
